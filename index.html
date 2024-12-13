@@ -3,90 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mabsout Mohamed Portfolio</title>
+  <title>Mabsout Mohamed | Portfolio</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="scripts.js" defer></script>
 </head>
 <body>
   <header>
-    <div class="container">
-      <h1>Mabsout Mohamed</h1>
-      <p>Information Systems and Telecommunications Engineer</p>
+    <div class="navbar">
+      <div class="logo">Mabsout Mohamed</div>
       <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
+  <section id="hero">
+    <div class="hero-container">
+      <h1>Hi, I'm Mohamed Mabsout</h1>
+      <p>A Passionate Software Engineer Crafting Digital Solutions</p>
+      <a href="#projects" class="cta">View My Work</a>
+    </div>
+  </section>
+
   <section id="about">
     <div class="container">
       <h2>About Me</h2>
-      <p>
-        Hi, I’m Mabsout Mohamed, a software engineer specializing in Information and Communication Systems Engineering. 
-        Passionate about solving real-world problems through technology, I thrive in dynamic environments.
-      </p>
-      <ul>
-        <li><strong>Location:</strong> Cité Militaire, Bouknadel, Salé</li>
-        <li><strong>Languages:</strong> Arabic (Native), English (Advanced), French (Advanced)</li>
-        <li><strong>Education:</strong> ENSAJ, 3rd Year Engineering Cycle</li>
-      </ul>
+      <p>I am a third-year engineering student specializing in Information Systems and Telecommunications. My passion lies in building efficient and scalable software solutions while collaborating in dynamic, innovative environments.</p>
     </div>
   </section>
 
   <section id="skills">
     <div class="container">
       <h2>Skills</h2>
-      <ul>
-        <li>Programming Languages: Python, Java, PHP, SQL, C</li>
-        <li>Back-End: Java EE, SpringBoot, Symfony, NodeJS</li>
-        <li>Front-End: ReactJS, Flutter, HTML5, CSS3</li>
-        <li>Databases: MySQL, MongoDB, Firebase</li>
-        <li>Networks: LAN/WLAN, Advanced Routing, VoIP/ToIP</li>
-        <li>System Administration: Linux, Windows Server, Cryptography</li>
-      </ul>
+      <div class="skills-grid">
+        <div class="skill">
+          <h3>Python</h3>
+          <div class="progress"><div class="progress-bar" style="width: 90%;"></div></div>
+        </div>
+        <div class="skill">
+          <h3>Java</h3>
+          <div class="progress"><div class="progress-bar" style="width: 85%;"></div></div>
+        </div>
+        <div class="skill">
+          <h3>PHP</h3>
+          <div class="progress"><div class="progress-bar" style="width: 80%;"></div></div>
+        </div>
+        <div class="skill">
+          <h3>ReactJS</h3>
+          <div class="progress"><div class="progress-bar" style="width: 75%;"></div></div>
+        </div>
+      </div>
     </div>
   </section>
 
   <section id="projects">
     <div class="container">
       <h2>Projects</h2>
-      <ul>
-        <li>
-          <strong>Ensajiste Mobile App:</strong> A smart app developed with Dart and Flutter to streamline interactions.
-        </li>
-        <li>
-          <strong>Pharmacy Management Platform:</strong> Full-stack app using Java and ReactJS.
-        </li>
-        <li>
-          <strong>Student Management Platform:</strong> Back-end solution with Spring Boot for academic roles.
-        </li>
-        <li>
-          <strong>Network Monitoring Program:</strong> Python-based tool for supervising network links.
-        </li>
-        <li>
-          <strong>Web Application for Internship Requests:</strong> Built with PHP and Symfony.
-        </li>
-      </ul>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Ensajiste Mobile App</h3>
+          <p>An app facilitating interaction between administration, teachers, and students.</p>
+        </div>
+        <div class="project-card">
+          <h3>Pharmacy Management Platform</h3>
+          <p>Full-stack app managing on-call pharmacies with Java and ReactJS.</p>
+        </div>
+        <div class="project-card">
+          <h3>Network Monitoring Tool</h3>
+          <p>Python-based program for supervising network links.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <section id="contact">
     <div class="container">
       <h2>Contact Me</h2>
-      <ul>
-        <li><strong>Email:</strong> mabsoutmohamed989@gmail.com</li>
-        <li><strong>Phone:</strong> +212 659 59 28 23</li>
-        <li><strong>LinkedIn:</strong> <a href="#">LinkedIn Profile</a></li>
-        <li><strong>GitHub:</strong> <a href="#">GitHub Profile</a></li>
-      </ul>
+      <form id="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
     </div>
   </section>
 
   <footer>
     <div class="container">
-      <p>&copy; 2024 Mabsout Mohamed. All rights reserved.</p>
+      <p>&copy; 2024 Mabsout Mohamed. All Rights Reserved.</p>
     </div>
   </footer>
 </body>
