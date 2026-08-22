@@ -232,10 +232,56 @@
           </div>
         </div>
 
+        <!-- ===== PROJECT 02 (RAG assistant) ===== -->
+        <div id="proj-rag" style="padding:34px 48px; border-bottom:1px solid #11161f;">
+          <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:4px;">
+            <span style="font-size:12px; color:#58a6ff;">// 02</span>
+            <span style="font-size:10px; color:#3fb950; border:1px solid #1f3a2a; background:#0f1f17; border-radius:3px; padding:2px 7px;">LIVE &middot; 2026</span>
+            <span style="font-size:10px; color:#d2a8ff; border:1px solid #3c2d52; background:#1a1226; border-radius:3px; padding:2px 7px;">AI &middot; RAG</span>
+          </div>
+          <h3 style="font-size:20px; color:#e6edf3; margin:0 0 4px; letter-spacing:-0.01em;">Internal HR Assistant &mdash; RAG over a Private Corpus</h3>
+          <div style="font-size:12.5px; color:#5b6675; margin-bottom:18px;">SIB &middot; K&eacute;nitra</div>
+          <p style="font-family:'IBM Plex Sans',sans-serif; font-size:14.5px; color:#9aa7b4; line-height:1.7; max-width:680px; margin:0 0 24px;" data-i18n="prag_sum">A retrieval-augmented assistant answering employee questions over a private HR corpus &mdash; permission filtering applied before similarity is ever computed, and explicit refusal when the corpus cannot support an answer.</p>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; align-items:start;">
+            <div>
+              <div style="margin-bottom:14px;"><div style="font-size:11px; letter-spacing:0.1em; color:#5b6675; margin-bottom:5px;">PROBLEM</div><p style="font-family:'IBM Plex Sans',sans-serif; margin:0; color:#9aa7b4; font-size:13.5px; line-height:1.65;" data-i18n="prag_pb">HR answered the same policy questions every week while the answers sat in documents nobody could search. Any assistant over that corpus risks the opposite failure: surfacing a salary or a contract clause to the wrong employee.</p></div>
+              <div style="margin-bottom:14px;"><div style="font-size:11px; letter-spacing:0.1em; color:#5b6675; margin-bottom:5px;">APPROACH</div><p style="font-family:'IBM Plex Sans',sans-serif; margin:0; color:#9aa7b4; font-size:13.5px; line-height:1.65;" data-i18n="prag_ap">Hybrid retrieval &mdash; BAAI/bge-m3 embeddings with a tuned relevance floor, plus a lexical rescue path for exact HR terms that vectors miss. Access rights are a SQL predicate applied <em>before</em> scoring, so a forbidden chunk is never ranked. Embeddings run in a dedicated sidecar because the 2&ndash;3&nbsp;GB model would not fit the production VPS.</p></div>
+              <div style="margin-bottom:20px;"><div style="font-size:11px; letter-spacing:0.1em; color:#5b6675; margin-bottom:5px;">OUTCOME</div><p style="font-family:'IBM Plex Sans',sans-serif; margin:0; color:#9aa7b4; font-size:13.5px; line-height:1.65;" data-i18n="prag_out">Answers stay grounded in the corpus, and questions it cannot cover are logged into a weekly gap digest that drives what gets documented next. Rolled out to a pilot group before general access.</p></div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:18px;">
+                <div style="background:#0f1f17; border:1px solid #1f3a2a; border-radius:7px; padding:14px;"><div style="color:#3fb950; font-size:24px; font-weight:700;">0</div><div style="font-family:'IBM Plex Sans',sans-serif; color:#8b97a5; font-size:11.5px; margin-top:3px;" data-i18n="prag_m1">forbidden chunks ever scored</div></div>
+                <div style="background:#0f1f17; border:1px solid #1f3a2a; border-radius:7px; padding:14px;"><div style="color:#3fb950; font-size:24px; font-weight:700;">1.3k</div><div style="font-family:'IBM Plex Sans',sans-serif; color:#8b97a5; font-size:11.5px; margin-top:3px;" data-i18n="prag_m2">lines of tests, 3 security suites</div></div>
+              </div>
+              <div style="display:flex; gap:7px; flex-wrap:wrap;"><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Python</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">FastAPI</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Gemini</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">BAAI/bge-m3</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Hybrid retrieval</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">RBAC</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Docker</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Pytest</span></div>
+              <div style="display:inline-flex; align-items:center; gap:7px; margin-top:16px; font-size:12px; color:#5b6675;"><span style="width:6px;height:6px;border-radius:50%;background:#5b6675;"></span>Private codebase</div>
+            </div>
+            <!-- retrieval pipeline -->
+            <div style="background:#0d1118; border:1px solid #1a212c; border-radius:8px; padding:18px; background-image:linear-gradient(#11161f 1px,transparent 1px),linear-gradient(90deg,#11161f 1px,transparent 1px); background-size:22px 22px;">
+              <div style="display:flex; justify-content:space-between; font-size:11px; color:#5b6675; margin-bottom:16px;"><span>retrieval-pipeline.svg</span><span style="color:#3fb950;">&#9679; 1024-d</span></div>
+              <div style="background:#0e1a2b; border:1px solid #1b3050; border-radius:5px; padding:8px 12px; max-width:250px; margin:0 auto; text-align:center; color:#79c0ff; font-size:12px;">employee question</div>
+              <div style="width:2px;height:14px;background:#2a3340;margin:0 auto;"></div>
+              <div style="text-align:center; font-size:9px; color:#58a6ff; margin-bottom:4px;">language router</div>
+              <div style="width:2px;height:14px;background:#2a3340;margin:0 auto;"></div>
+              <div style="background:#1a1226; border:1px solid #3c2d52; border-left:2px solid #d2a8ff; border-radius:5px; padding:9px 13px; max-width:250px; margin:0 auto; text-align:center;"><div style="color:#d2a8ff; font-size:12.5px;">permission filter (SQL)</div><div style="color:#7d6a96; font-size:9px; margin-top:2px;">applied before scoring</div></div>
+              <div style="width:2px;height:14px;background:#2a3340;margin:0 auto;"></div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                <div style="background:#11151c; border:1px solid #232a35; border-radius:5px; padding:8px; text-align:center; font-size:10.5px; color:#c5ced8;">semantic<br><span style="color:#5b6675;">bge-m3 &ge; 0.55</span></div>
+                <div style="background:#11151c; border:1px solid #232a35; border-radius:5px; padding:8px; text-align:center; font-size:10.5px; color:#c5ced8;">lexical<br><span style="color:#5b6675;">rescue path</span></div>
+              </div>
+              <div style="width:2px;height:14px;background:#2a3340;margin:0 auto; margin-top:8px;"></div>
+              <div style="background:#0e1a2b; border:1px solid #1b3050; border-left:2px solid #58a6ff; border-radius:5px; padding:9px 13px; max-width:250px; margin:0 auto; text-align:center; color:#79c0ff; font-size:12.5px;">top-k chunks &rarr; Gemini</div>
+              <div style="display:flex; justify-content:center; gap:30px; margin:8px 0 4px;"><div style="width:2px;height:14px;background:#2a3340;"></div><div style="width:2px;height:14px;background:#2a3340;"></div></div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+                <div style="background:#11151c; border:1px solid #232a35; border-left:2px solid #3fb950; border-radius:5px; padding:8px; text-align:center; font-size:10.5px; color:#c5ced8;">grounded answer</div>
+                <div style="background:#11151c; border:1px solid #232a35; border-left:2px solid #d29922; border-radius:5px; padding:8px; text-align:center; font-size:10.5px; color:#c5ced8;">refuse<br><span style="color:#5b6675;">&rarr; gap digest</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- ===== PROJECT 02 ===== -->
         <div id="proj-02" style="padding:34px 48px; border-bottom:1px solid #11161f;">
           <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:4px;">
-            <span style="font-size:12px; color:#58a6ff;">// 02</span>
+            <span style="font-size:12px; color:#58a6ff;">// 03</span>
             <span style="font-size:10px; color:#3fb950; border:1px solid #1f3a2a; background:#0f1f17; border-radius:3px; padding:2px 7px;">LIVE · 2025</span>
           </div>
           <h3 style="font-size:20px; color:#e6edf3; margin:0 0 4px;">Enterprise ERP — HR &amp; Payroll Modules</h3>
@@ -284,7 +330,7 @@
         <!-- ===== PROJECT 03 ===== -->
         <div id="proj-03" style="padding:34px 48px; border-bottom:1px solid #11161f;">
           <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:4px;">
-            <span style="font-size:12px; color:#58a6ff;">// 03</span>
+            <span style="font-size:12px; color:#58a6ff;">// 04</span>
             <span style="font-size:10px; color:#d2a8ff; border:1px solid #2d2348; background:#1a1430; border-radius:3px; padding:2px 7px;">PFE · 2025</span>
           </div>
           <h3 style="font-size:20px; color:#e6edf3; margin:0 0 4px;">HR-Expense</h3>
@@ -325,7 +371,7 @@
         <!-- ===== PROJECT 04 ===== -->
         <div id="proj-04" style="padding:34px 48px; border-bottom:1px solid #11161f;">
           <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:4px;">
-            <span style="font-size:12px; color:#58a6ff;">// 04</span>
+            <span style="font-size:12px; color:#58a6ff;">// 05</span>
             <span style="font-size:10px; color:#f0883e; border:1px solid #3a2a16; background:#1f160c; border-radius:3px; padding:2px 7px;">PUBLIC SECTOR · 2024</span>
           </div>
           <h3 style="font-size:20px; color:#e6edf3; margin:0 0 4px;">Internship Request Portal — R.A.K</h3>
@@ -363,7 +409,7 @@
         <!-- ===== PROJECT 05 ===== -->
         <div id="proj-05" style="padding:34px 48px; border-bottom:1px solid #11161f;">
           <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:4px;">
-            <span style="font-size:12px; color:#58a6ff;">// 05</span>
+            <span style="font-size:12px; color:#58a6ff;">// 06</span>
             <span style="font-size:10px; color:#8b97a5; border:1px solid #232a35; background:#11151c; border-radius:3px; padding:2px 7px;">SIDE PROJECT</span>
           </div>
           <h3 style="font-size:20px; color:#e6edf3; margin:0 0 4px;">Expense.SIB Mobile</h3>
@@ -398,7 +444,7 @@
         <!-- ===== PROJECT 06 ===== -->
         <div id="proj-06" style="padding:34px 48px 40px; border-bottom:1px solid #11161f;">
           <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:4px;">
-            <span style="font-size:12px; color:#58a6ff;">// 06</span>
+            <span style="font-size:12px; color:#58a6ff;">// 07</span>
             <span style="font-size:10px; color:#8b97a5; border:1px solid #232a35; background:#11151c; border-radius:3px; padding:2px 7px;">HOMELAB</span>
           </div>
           <h3 style="font-size:20px; color:#e6edf3; margin:0 0 4px;">Self-hosted Infrastructure Gateway</h3>
@@ -641,6 +687,12 @@ const app = {
       p01_out: { en: 'The full order lifecycle now lives in one secured, auditable system — faster and fully traceable.', fr: "Tout le cycle de vie des commandes vit désormais dans un seul système sécurisé et auditable — plus rapide et entièrement traçable." },
       p01_m1: { en: 'manual processing time', fr: 'de traitement manuel' },
       p01_m2: { en: 'faster approval cycle', fr: "cycle d'approbation plus rapide" },
+      prag_sum: { en: 'A retrieval-augmented assistant answering employee questions over a private HR corpus \u2014 permission filtering applied before similarity is ever computed, and explicit refusal when the corpus cannot support an answer.', fr: 'Un assistant RAG qui r\u00e9pond aux questions des salari\u00e9s sur un corpus RH priv\u00e9 \u2014 filtrage des droits appliqu\u00e9 avant tout calcul de similarit\u00e9, et refus explicite lorsque le corpus ne permet pas de r\u00e9pondre.' },
+      prag_pb: { en: 'HR answered the same policy questions every week while the answers sat in documents nobody could search. Any assistant over that corpus risks the opposite failure: surfacing a salary or a contract clause to the wrong employee.', fr: 'Les RH r\u00e9pondaient chaque semaine aux m\u00eames questions, alors que les r\u00e9ponses dormaient dans des documents introuvables. Tout assistant sur ce corpus risque l\u2019erreur inverse : exposer un salaire ou une clause de contrat au mauvais salari\u00e9.' },
+      prag_ap: { en: 'Hybrid retrieval \u2014 BAAI/bge-m3 embeddings with a tuned relevance floor, plus a lexical rescue path for exact HR terms that vectors miss. Access rights are a SQL predicate applied before scoring, so a forbidden chunk is never ranked. Embeddings run in a dedicated sidecar because the 2\u20133 GB model would not fit the production VPS.', fr: 'Recherche hybride \u2014 embeddings BAAI/bge-m3 \u00e0 seuil de pertinence calibr\u00e9, doubl\u00e9s d\u2019une voie lexicale pour les termes RH exacts que le vectoriel manque. Les droits d\u2019acc\u00e8s sont un pr\u00e9dicat SQL appliqu\u00e9 avant le scoring : un chunk interdit n\u2019est jamais class\u00e9. Les embeddings tournent dans un sidecar d\u00e9di\u00e9, le mod\u00e8le de 2\u20133 Go ne tenant pas sur le VPS de production.' },
+      prag_out: { en: 'Answers stay grounded in the corpus, and questions it cannot cover are logged into a weekly gap digest that drives what gets documented next. Rolled out to a pilot group before general access.', fr: 'Les r\u00e9ponses restent ancr\u00e9es dans le corpus, et les questions non couvertes alimentent un digest hebdomadaire des lacunes qui pilote ce qui sera document\u00e9 ensuite. D\u00e9ploiement sur groupe pilote avant l\u2019ouverture g\u00e9n\u00e9rale.' },
+      prag_m1: { en: 'forbidden chunks ever scored', fr: 'chunk interdit jamais scor\u00e9' },
+      prag_m2: { en: 'lines of tests, 3 security suites', fr: 'lignes de tests, 3 suites s\u00e9curit\u00e9' },
       p02_sum: { en: 'Three sensitive ERP modules — HR management, payroll automation, and time tracking — serving 100+ employees, with a real-time cost engine for project profitability and fine-grained RBAC data access control.', fr: "Trois modules ERP sensibles — gestion RH, automatisation de la paie et suivi du temps — pour plus de 100 employés, avec un moteur de coûts en temps réel pour la rentabilité des projets et un contrôle d'accès RBAC granulaire." },
       p02_pb: { en: 'Sensitive HR and payroll data demanded strict, role-scoped access — and leadership needed real-time financial visibility.', fr: 'Les données RH et de paie sensibles exigeaient un accès strict par rôle — et la direction avait besoin de visibilité financière en temps réel.' },
       p02_ap: { en: 'Designed modular services with fine-grained RBAC at the data-access layer and a real-time cost engine feeding profitability dashboards.', fr: "Services modulaires avec RBAC granulaire au niveau de l'accès aux données et moteur de coûts en temps réel alimentant les tableaux de rentabilité." },
