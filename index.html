@@ -1,102 +1,675 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mabsout Mohamed | Portfolio</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="scripts.js" defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mohamed Mabsout — Portfolio</title>
+<meta name="description" content="Mohamed Mabsout — Software Engineer. Security-first backend & full-stack projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background:#06080c; }
+  @keyframes blink { 0%,49%{opacity:1;} 50%,100%{opacity:0;} }
+  #editor-scroll::-webkit-scrollbar { width:12px; }
+  #editor-scroll::-webkit-scrollbar-track { background:#0b0e13; }
+  #editor-scroll::-webkit-scrollbar-thumb { background:#1d2430; border-radius:6px; border:3px solid #0b0e13; }
+  #editor-scroll::-webkit-scrollbar-thumb:hover { background:#2a3340; }
+  .navfile:hover { background:#131a24 !important; color:#c5ced8 !important; }
+  .btn-primary:hover { background:#79c0ff !important; }
+  .btn-ghost:hover { border-color:#58a6ff !important; color:#e6edf3 !important; }
+  .link-row:hover { color:#79c0ff !important; }
+</style>
 </head>
-<body>
-  <header>
-    <div class="navbar">
-      <div class="logo">Mabsout Mohamed</div>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<body style="margin:0; background:#06080c;">
+<div id="app-root" style="height:100vh; min-height:640px; display:flex; flex-direction:column; background:#0b0e13; font-family:'JetBrains Mono',monospace; color:#c5ced8; overflow:hidden;">
 
-  <section id="hero">
-    <div class="hero-container">
-      <h1>Hi, I'm Mohamed Mabsout</h1>
-      <p>A Passionate Software Engineer Crafting Digital Solutions</p>
-      <a href="#projects" class="cta">View My Work</a>
+  <!-- ===== TITLEBAR ===== -->
+  <div style="flex:none; display:flex; align-items:center; height:40px; padding:0 14px; background:#0f131a; border-bottom:1px solid #1d2430;">
+    <div style="display:flex; gap:8px;">
+      <span style="width:12px;height:12px;border-radius:50%;background:#ff5f57;"></span>
+      <span style="width:12px;height:12px;border-radius:50%;background:#febc2e;"></span>
+      <span style="width:12px;height:12px;border-radius:50%;background:#28c840;"></span>
     </div>
-  </section>
-
-  <section id="about">
-    <div class="container">
-      <h2>About Me</h2>
-      <p>I am a third-year engineering student specializing in Information Systems and Telecommunications. My passion lies in building efficient and scalable software solutions while collaborating in dynamic, innovative environments.</p>
+    <div style="flex:1; text-align:center; font-size:12px; color:#5b6675;">mohamed-mabsout — ~/portfolio</div>
+    <div style="display:flex; gap:14px; font-size:11px; color:#3b4250;">
+      <span>⌘</span><span>⊟</span><span>◫</span>
     </div>
-  </section>
+  </div>
 
-  <section id="skills">
-    <div class="container">
-      <h2>Skills</h2>
-      <div class="skills-grid">
-        <div class="skill">
-          <h3>Python</h3>
-          <div class="progress"><div class="progress-bar" style="width: 90%;"></div></div>
-        </div>
-        <div class="skill">
-          <h3>Java</h3>
-          <div class="progress"><div class="progress-bar" style="width: 85%;"></div></div>
-        </div>
-        <div class="skill">
-          <h3>PHP</h3>
-          <div class="progress"><div class="progress-bar" style="width: 80%;"></div></div>
-        </div>
-        <div class="skill">
-          <h3>ReactJS</h3>
-          <div class="progress"><div class="progress-bar" style="width: 75%;"></div></div>
-        </div>
+  <!-- ===== MIDDLE: sidebar + main ===== -->
+  <div style="flex:1; display:flex; min-height:0;">
+
+    <!-- ===== SIDEBAR / EXPLORER ===== -->
+    <div style="flex:none; width:256px; background:#0d1118; border-right:1px solid #1a212c; overflow-y:auto; display:flex; flex-direction:column;">
+      <div style="padding:14px 16px 10px; color:#5b6675; font-size:11px; letter-spacing:0.14em;">EXPLORER</div>
+      <div style="padding:2px 16px 8px; color:#8b97a5; font-weight:600; font-size:11.5px; letter-spacing:0.08em;">PORTFOLIO</div>
+
+      <div style="padding:3px 16px 3px 22px; color:#8b97a5; font-size:12.5px;">▾ content</div>
+      <div class="navfile" data-file="readme" data-target="readme" style="cursor:pointer; padding:4px 16px 4px 38px; font-size:12.5px; color:#8b97a5; border-left:2px solid transparent;">README.md</div>
+      <div class="navfile" data-file="about" data-target="about" style="cursor:pointer; padding:4px 16px 4px 38px; font-size:12.5px; color:#8b97a5; border-left:2px solid transparent;">about.md</div>
+
+      <div data-file="projects" data-target="projects" style="cursor:pointer; padding:6px 16px 3px 22px; color:#8b97a5; font-size:12.5px; border-left:2px solid transparent;">▾ projects</div>
+      <div class="navfile" data-target="proj-01" style="cursor:pointer; padding:4px 16px 4px 38px; font-size:12px; color:#8b97a5;">industrial-po-platform<span style="color:#3b4250;">/</span></div>
+      <div class="navfile" data-target="proj-02" style="cursor:pointer; padding:4px 16px 4px 38px; font-size:12px; color:#8b97a5;">enterprise-erp<span style="color:#3b4250;">/</span></div>
+      <div class="navfile" data-target="proj-03" style="cursor:pointer; padding:4px 16px 4px 38px; font-size:12px; color:#8b97a5;">hr-expense<span style="color:#3b4250;">/</span></div>
+      <div class="navfile" data-target="proj-04" style="cursor:pointer; padding:4px 16px 4px 38px; font-size:12px; color:#8b97a5;">internship-portal-rak<span style="color:#3b4250;">/</span></div>
+      <div class="navfile" data-target="proj-05" style="cursor:pointer; padding:4px 16px 4px 38px; font-size:12px; color:#8b97a5;">expense-sib-mobile<span style="color:#3b4250;">/</span></div>
+      <div class="navfile" data-target="proj-06" style="cursor:pointer; padding:4px 16px 4px 38px; font-size:12px; color:#8b97a5;">infra-gateway<span style="color:#3b4250;">/</span></div>
+
+      <div style="padding:6px 16px 3px 22px; color:#8b97a5; font-size:12.5px;">▾ meta</div>
+      <div class="navfile" data-file="skills" data-target="skills" style="cursor:pointer; padding:4px 16px 4px 38px; font-size:12.5px; color:#8b97a5; border-left:2px solid transparent;">skills.md</div>
+      <div class="navfile" data-file="contact" data-target="contact" style="cursor:pointer; padding:4px 16px 4px 38px; font-size:12.5px; color:#8b97a5; border-left:2px solid transparent;">contact.sh</div>
+
+      <div style="margin-top:auto; padding:16px; border-top:1px solid #1a212c; font-size:11px; color:#5b6675; line-height:1.8;">
+        <div style="color:#3fb950;">● <span data-i18n="status_open">Open to opportunities</span></div>
+        <div>Salé, Morocco</div>
+        <div style="color:#58a6ff;">github.com/mohamedmabsout</div>
       </div>
     </div>
-  </section>
 
-  <section id="projects">
-    <div class="container">
-      <h2>Projects</h2>
-      <div class="project-grid">
-        <div class="project-card">
-          <h3>Ensajiste Mobile App</h3>
-          <p>An app facilitating interaction between administration, teachers, and students.</p>
+    <!-- ===== MAIN ===== -->
+    <div style="flex:1; display:flex; flex-direction:column; min-width:0;">
+
+      <!-- tab bar -->
+      <div style="flex:none; display:flex; height:38px; background:#0d1118; border-bottom:1px solid #1a212c; font-size:12.5px;">
+        <div style="display:flex; align-items:center; gap:9px; padding:0 16px; background:#0b0e13; border-right:1px solid #1a212c; border-top:2px solid #58a6ff; color:#e6edf3;">
+          <span style="width:7px;height:7px;border-radius:50%;background:#58a6ff;"></span>
+          <span id="active-tab-name">README.md</span>
+          <span style="color:#5b6675; font-size:14px;">×</span>
         </div>
-        <div class="project-card">
-          <h3>Pharmacy Management Platform</h3>
-          <p>Full-stack app managing on-call pharmacies with Java and ReactJS.</p>
-        </div>
-        <div class="project-card">
-          <h3>Network Monitoring Tool</h3>
-          <p>Python-based program for supervising network links.</p>
-        </div>
+        <div style="display:flex; align-items:center; padding:0 16px; color:#3b4250; font-size:11px; margin-left:auto;">UTF-8 · LF · spaces:2</div>
       </div>
-    </div>
-  </section>
 
-  <section id="contact">
-    <div class="container">
-      <h2>Contact Me</h2>
-      <form id="contact-form">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </div>
-  </section>
+      <!-- scroll area -->
+      <div id="editor-scroll" style="flex:1; overflow-y:auto; position:relative; scroll-behavior:smooth;">
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2024 Mabsout Mohamed. All Rights Reserved.</p>
+        <!-- ========== README / HERO ========== -->
+        <div id="readme" style="padding:40px 48px 20px; border-bottom:1px solid #11161f;">
+          <div style="display:flex; font-size:14px; max-width:760px;">
+            <div style="flex:none; width:34px; margin-right:20px; text-align:right; color:#3b4250;">
+              <div style="height:26px; line-height:26px;">1</div><div style="height:26px; line-height:26px;">2</div><div style="height:26px; line-height:26px;">3</div><div style="height:26px; line-height:26px;">4</div><div style="height:26px; line-height:26px;">5</div><div style="height:26px; line-height:26px;">6</div><div style="height:26px; line-height:26px;">7</div><div style="height:26px; line-height:26px;">8</div><div style="height:26px; line-height:26px;">9</div>
+            </div>
+            <div style="flex:1; min-width:0;">
+              <div style="height:26px; line-height:26px; color:#58a6ff; font-weight:700; font-size:21px;"># Mohamed Mabsout</div>
+              <div style="height:26px; line-height:26px;">&nbsp;</div>
+              <div style="height:26px; line-height:26px; color:#3fb950;" data-i18n="hero_l1">&gt; State Engineer · ENSA El Jadida</div>
+              <div style="height:26px; line-height:26px; color:#3fb950;" data-i18n="hero_l2">&gt; Security-first backend &amp; infrastructure</div>
+              <div style="height:26px; line-height:26px;">&nbsp;</div>
+              <div style="line-height:26px; color:#c5ced8; white-space:normal;" data-i18n="hero_bio">I design and ship secure backends, hardened infrastructure, and full-stack systems that survive real production traffic — without leaking data.</div>
+            </div>
+          </div>
+
+          <!-- stat strip -->
+          <div style="display:flex; flex-wrap:wrap; gap:0; margin-top:30px; border:1px solid #1a212c; border-radius:8px; overflow:hidden; max-width:760px;">
+            <div style="flex:1; min-width:140px; padding:16px 22px; border-right:1px solid #1a212c;"><div style="color:#e6edf3; font-size:24px; font-weight:700;">18+</div><div style="color:#5b6675; font-size:10.5px; letter-spacing:0.08em;" data-i18n="stat_months">MONTHS IN PRODUCTION</div></div>
+            <div style="flex:1; min-width:140px; padding:16px 22px; border-right:1px solid #1a212c;"><div style="color:#e6edf3; font-size:24px; font-weight:700;">6</div><div style="color:#5b6675; font-size:10.5px; letter-spacing:0.08em;" data-i18n="stat_projects">MAJOR PROJECTS</div></div>
+            <div style="flex:1; min-width:140px; padding:16px 22px; border-right:1px solid #1a212c;"><div style="color:#e6edf3; font-size:24px; font-weight:700;">3</div><div style="color:#5b6675; font-size:10.5px; letter-spacing:0.08em;" data-i18n="stat_aws">AWS CERTIFICATIONS</div></div>
+            <div style="flex:1; min-width:140px; padding:16px 22px;"><div style="color:#3fb950; font-size:24px; font-weight:700;">0</div><div style="color:#5b6675; font-size:10.5px; letter-spacing:0.08em;" data-i18n="stat_leaks">DATA LEAKS</div></div>
+          </div>
+
+          <!-- CTAs -->
+          <div style="display:flex; gap:12px; margin-top:24px; flex-wrap:wrap; font-size:13px;">
+            <span class="btn-primary" data-target="projects" style="cursor:pointer; background:#58a6ff; color:#06080c; font-weight:600; padding:11px 18px; border-radius:6px;" data-i18n="cta_work">view work →</span>
+            <span class="btn-ghost" data-target="contact" style="cursor:pointer; border:1px solid #232a35; color:#c5ced8; padding:11px 18px; border-radius:6px;" data-i18n="cta_contact">get in touch</span>
+            <span class="btn-ghost" style="cursor:pointer; border:1px solid #232a35; color:#c5ced8; padding:11px 18px; border-radius:6px;" data-i18n="cta_cv">↓ download CV (PDF)</span>
+          </div>
+        </div>
+
+        <!-- ========== ABOUT ========== -->
+        <div id="about" style="padding:40px 48px; border-bottom:1px solid #11161f;">
+          <div style="font-size:12px; letter-spacing:0.14em; color:#58a6ff; margin-bottom:22px;">// WHO I AM</div>
+          <div style="display:grid; grid-template-columns:1fr 300px; gap:40px;">
+            <div>
+              <h2 style="font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:26px; color:#e6edf3; margin:0 0 18px; line-height:1.25;" data-i18n="about_h">Building secure systems that actually ship.</h2>
+              <p style="font-family:'IBM Plex Sans',sans-serif; font-size:15px; line-height:1.75; color:#9aa7b4; max-width:560px; margin:0 0 22px;" data-i18n="about_bio">I'm a State Engineer from ENSA El Jadida, currently freelancing for SIB building production systems in both Java (Spring Boot) and Python (FastAPI) — from JWT/RBAC-enforced ERP modules serving 100+ employees to an LLM-powered CV-parsing pipeline where every model output is re-validated locally before it touches the database. I work where security meets engineering. I care about the boring parts: access control, data integrity, and what happens at 3am when something breaks.</p>
+
+              <!-- detail rows -->
+              <div style="font-size:13px; line-height:2.1; color:#8b97a5;">
+                <div><span style="color:#5b6675; display:inline-block; width:104px;">location</span><span style="color:#c5ced8;">Bouknadel, Salé, Morocco</span></div>
+                <div><span style="color:#5b6675; display:inline-block; width:104px;">degree</span><span style="color:#c5ced8;">State Engineer — ENSA El Jadida (2025)</span></div>
+                <div><span style="color:#5b6675; display:inline-block; width:104px;">languages</span><span style="color:#c5ced8;">Arabic (native) · French (C2) · English (B2+)</span></div>
+                <div><span style="color:#5b6675; display:inline-block; width:104px;">email</span><span id="email-about" style="color:#58a6ff;">loading…</span></div>
+              </div>
+
+              <!-- principles -->
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:26px; max-width:560px;">
+                <div style="background:#11151c; border:1px solid #232a35; border-left:2px solid #58a6ff; border-radius:6px; padding:14px 16px;">
+                  <div style="color:#e6edf3; font-size:13px; font-weight:600; margin-bottom:5px;" data-i18n="pr1_t">Security by default</div>
+                  <div style="font-family:'IBM Plex Sans',sans-serif; color:#8b97a5; font-size:12.5px; line-height:1.6;" data-i18n="pr1_d">RBAC, JWT and encryption baked in — not bolted on.</div>
+                </div>
+                <div style="background:#11151c; border:1px solid #232a35; border-left:2px solid #58a6ff; border-radius:6px; padding:14px 16px;">
+                  <div style="color:#e6edf3; font-size:13px; font-weight:600; margin-bottom:5px;" data-i18n="pr2_t">Production mindset</div>
+                  <div style="font-family:'IBM Plex Sans',sans-serif; color:#8b97a5; font-size:12.5px; line-height:1.6;" data-i18n="pr2_d">Every project I've shipped runs in a real production environment.</div>
+                </div>
+                <div style="background:#11151c; border:1px solid #232a35; border-left:2px solid #58a6ff; border-radius:6px; padding:14px 16px;">
+                  <div style="color:#e6edf3; font-size:13px; font-weight:600; margin-bottom:5px;" data-i18n="pr3_t">Full-stack depth</div>
+                  <div style="font-family:'IBM Plex Sans',sans-serif; color:#8b97a5; font-size:12.5px; line-height:1.6;" data-i18n="pr3_d">From database schemas to React UIs and Docker deployments.</div>
+                </div>
+                <div style="background:#11151c; border:1px solid #232a35; border-left:2px solid #58a6ff; border-radius:6px; padding:14px 16px;">
+                  <div style="color:#e6edf3; font-size:13px; font-weight:600; margin-bottom:5px;" data-i18n="pr4_t">Measurable outcomes</div>
+                  <div style="font-family:'IBM Plex Sans',sans-serif; color:#8b97a5; font-size:12.5px; line-height:1.6;" data-i18n="pr4_d">I ship things that move real numbers, not demos.</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- photo placeholder -->
+            <div>
+              <div style="background:#0d1118; border:1px solid #1a212c; border-radius:8px; overflow:hidden;">
+                <div style="display:flex; align-items:center; justify-content:space-between; padding:9px 12px; border-bottom:1px solid #1a212c; font-size:11px; color:#5b6675;"><span>photo.jpg</span><span>—</span></div>
+                <div style="aspect-ratio:3/4; overflow:hidden;">
+                  <img src="data:image/jpeg;base64,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" alt="Mohamed Mabsout" style="width:100%; height:100%; object-fit:cover; display:block;">
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== PROJECTS ========== -->
+        <div id="projects" style="padding:40px 48px 10px; border-bottom:1px solid #11161f;">
+          <div style="font-size:12px; letter-spacing:0.14em; color:#58a6ff; margin-bottom:10px;">// WHAT I'VE BUILT</div>
+          <h2 style="font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:26px; color:#e6edf3; margin:0 0 8px;">Projects</h2>
+          <p style="font-family:'IBM Plex Sans',sans-serif; font-size:14px; color:#8b97a5; margin:0 0 8px;" data-i18n="proj_intro">Production systems, graduation projects, and personal builds. All shipped, all secured.</p>
+        </div>
+
+        <!-- ===== PROJECT 01 ===== -->
+        <div id="proj-01" style="padding:34px 48px; border-bottom:1px solid #11161f;">
+          <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:4px;">
+            <span style="font-size:12px; color:#58a6ff;">// 01</span>
+            <span style="font-size:10px; color:#3fb950; border:1px solid #1f3a2a; background:#0f1f17; border-radius:3px; padding:2px 7px;">LIVE · 2026</span>
+            <span style="font-size:10px; color:#79c0ff; border:1px solid #1b3050; background:#0e1a2b; border-radius:3px; padding:2px 7px;">FLAGSHIP</span>
+          </div>
+          <h3 style="font-size:20px; color:#e6edf3; margin:0 0 4px; letter-spacing:-0.01em;">Industrial PO &amp; Subcontracting Platform</h3>
+          <div style="font-size:12.5px; color:#5b6675; margin-bottom:18px;">SIB · Kénitra</div>
+          <p style="font-family:'IBM Plex Sans',sans-serif; font-size:14.5px; color:#9aa7b4; line-height:1.7; max-width:680px; margin:0 0 24px;" data-i18n="p01_sum">A JWT-secured platform automating the full purchase-order and subcontractor execution lifecycle, with multi-level approval workflows and centralized access control.</p>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; align-items:start;">
+            <!-- left: case study + metrics -->
+            <div>
+              <div style="margin-bottom:14px;"><div style="font-size:11px; letter-spacing:0.1em; color:#5b6675; margin-bottom:5px;">PROBLEM</div><p style="font-family:'IBM Plex Sans',sans-serif; margin:0; color:#9aa7b4; font-size:13.5px; line-height:1.65;" data-i18n="p01_pb">Purchase orders and subcontractor flows ran on spreadsheets — no audit trail, no access control, and slow multi-level sign-off.</p></div>
+              <div style="margin-bottom:14px;"><div style="font-size:11px; letter-spacing:0.1em; color:#5b6675; margin-bottom:5px;">APPROACH</div><p style="font-family:'IBM Plex Sans',sans-serif; margin:0; color:#9aa7b4; font-size:13.5px; line-height:1.65;" data-i18n="p01_ap">Built an end-to-end platform with centralized JWT-based security, a multi-level approval workflow engine, and containerized deployment.</p></div>
+              <div style="margin-bottom:20px;"><div style="font-size:11px; letter-spacing:0.1em; color:#5b6675; margin-bottom:5px;">OUTCOME</div><p style="font-family:'IBM Plex Sans',sans-serif; margin:0; color:#9aa7b4; font-size:13.5px; line-height:1.65;" data-i18n="p01_out">The full order lifecycle now lives in one secured, auditable system — faster and fully traceable.</p></div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:18px;">
+                <div style="background:#0f1f17; border:1px solid #1f3a2a; border-radius:7px; padding:14px;"><div style="color:#3fb950; font-size:24px; font-weight:700;">−60%</div><div style="font-family:'IBM Plex Sans',sans-serif; color:#8b97a5; font-size:11.5px; margin-top:3px;" data-i18n="p01_m1">manual processing time</div></div>
+                <div style="background:#0f1f17; border:1px solid #1f3a2a; border-radius:7px; padding:14px;"><div style="color:#3fb950; font-size:24px; font-weight:700;">+35%</div><div style="font-family:'IBM Plex Sans',sans-serif; color:#8b97a5; font-size:11.5px; margin-top:3px;" data-i18n="p01_m2">faster approval cycle</div></div>
+              </div>
+              <div style="display:flex; gap:7px; flex-wrap:wrap;">
+                <span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Python</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">FastAPI</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">React</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Redux</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Pydantic</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Docker</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">MariaDB</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">JWT</span>
+              </div>
+              <div class="link-row" style="cursor:default; display:inline-flex; align-items:center; gap:7px; margin-top:16px; font-size:12px; color:#5b6675;"><span style="width:6px;height:6px;border-radius:50%;background:#5b6675;"></span>Private codebase</div>
+            </div>
+
+            <!-- right: architecture diagram -->
+            <div style="background:#0d1118; border:1px solid #1a212c; border-radius:8px; padding:18px; background-image:linear-gradient(#11161f 1px,transparent 1px),linear-gradient(90deg,#11161f 1px,transparent 1px); background-size:22px 22px;">
+              <div style="display:flex; justify-content:space-between; font-size:11px; color:#5b6675; margin-bottom:16px;"><span>auth-flow.svg</span><span style="color:#3fb950;">● verified</span></div>
+              <div style="max-width:280px; margin:0 auto;">
+                <div style="background:#11151c; border:1px solid #232a35; border-left:2px solid #58a6ff; border-radius:5px; padding:9px 13px;"><div style="color:#e6edf3; font-size:12.5px;">Client · React UI</div><div style="color:#5b6675; font-size:10px;">browser</div></div>
+                <div style="width:2px;height:14px;background:#2a3340;margin:0 auto;"></div>
+                <div style="text-align:center; font-size:9px; color:#58a6ff;">HTTPS</div>
+                <div style="background:#11151c; border:1px solid #232a35; border-left:2px solid #58a6ff; border-radius:5px; padding:9px 13px;"><div style="color:#e6edf3; font-size:12.5px;">API Gateway · FastAPI</div><div style="color:#5b6675; font-size:10px;">rate-limit · CORS</div></div>
+                <div style="width:2px;height:14px;background:#2a3340;margin:0 auto;"></div>
+                <div style="text-align:center; font-size:9px; color:#58a6ff;">verify JWT</div>
+                <div style="background:#0e1a2b; border:1px solid #1b3050; border-left:2px solid #58a6ff; border-radius:5px; padding:9px 13px; display:flex; justify-content:space-between; align-items:center;"><div><div style="color:#79c0ff; font-size:12.5px;">Approval Engine</div><div style="color:#5b6675; font-size:10px;">multi-level</div></div><span style="font-size:9px; color:#8b97a5;">RBAC</span></div>
+                <div style="width:2px;height:14px;background:#2a3340;margin:0 auto;"></div>
+                <div style="background:#11151c; border:1px solid #232a35; border-left:2px solid #3fb950; border-radius:5px; padding:9px 13px; display:flex; justify-content:space-between; align-items:center;"><div style="color:#e6edf3; font-size:12.5px;">MariaDB</div><span style="font-size:9px; color:#3fb950;">audit log</span></div>
+              </div>
+              <!-- code snippet -->
+              <div style="margin-top:18px; border:1px solid #1a212c; border-radius:6px; overflow:hidden; background:#0b0e13;">
+                <div style="padding:7px 12px; border-bottom:1px solid #1a212c; font-size:10.5px; color:#5b6675;">auth.py</div>
+                <div style="display:flex; padding:10px 12px; font-size:12px;">
+                  <div style="flex:none; width:20px; margin-right:14px; text-align:right; color:#3b4250;"><div style="height:22px;line-height:22px;">1</div><div style="height:22px;line-height:22px;">2</div><div style="height:22px;line-height:22px;">3</div><div style="height:22px;line-height:22px;">4</div><div style="height:22px;line-height:22px;">5</div></div>
+                  <div style="flex:1; min-width:0; white-space:nowrap; overflow-x:auto;">
+                    <div style="height:22px;line-height:22px;"><span style="color:#ff7b72;">def</span> <span style="color:#d2a8ff;">require_role</span>(role):</div>
+                    <div style="height:22px;line-height:22px;">&nbsp;&nbsp;claims = <span style="color:#d2a8ff;">decode</span>(token, SECRET)</div>
+                    <div style="height:22px;line-height:22px;">&nbsp;&nbsp;<span style="color:#ff7b72;">if</span> role <span style="color:#ff7b72;">not in</span> claims[<span style="color:#a5d6ff;">"roles"</span>]:</div>
+                    <div style="height:22px;line-height:22px;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#ff7b72;">raise</span> <span style="color:#79c0ff;">Forbidden</span>(<span style="color:#f0883e;">403</span>)</div>
+                    <div style="height:22px;line-height:22px;">&nbsp;&nbsp;<span style="color:#ff7b72;">return</span> claims</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== PROJECT 02 ===== -->
+        <div id="proj-02" style="padding:34px 48px; border-bottom:1px solid #11161f;">
+          <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:4px;">
+            <span style="font-size:12px; color:#58a6ff;">// 02</span>
+            <span style="font-size:10px; color:#3fb950; border:1px solid #1f3a2a; background:#0f1f17; border-radius:3px; padding:2px 7px;">LIVE · 2025</span>
+          </div>
+          <h3 style="font-size:20px; color:#e6edf3; margin:0 0 4px;">Enterprise ERP — HR &amp; Payroll Modules</h3>
+          <div style="font-size:12.5px; color:#5b6675; margin-bottom:18px;">SIB · Kénitra</div>
+          <p style="font-family:'IBM Plex Sans',sans-serif; font-size:14.5px; color:#9aa7b4; line-height:1.7; max-width:680px; margin:0 0 24px;" data-i18n="p02_sum">Three sensitive ERP modules — HR management, payroll automation, and time tracking — serving 100+ employees, with a real-time cost engine for project profitability and fine-grained RBAC data access control.</p>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; align-items:start;">
+            <div>
+              <div style="margin-bottom:14px;"><div style="font-size:11px; letter-spacing:0.1em; color:#5b6675; margin-bottom:5px;">PROBLEM</div><p style="font-family:'IBM Plex Sans',sans-serif; margin:0; color:#9aa7b4; font-size:13.5px; line-height:1.65;" data-i18n="p02_pb">Sensitive HR and payroll data demanded strict, role-scoped access — and leadership needed real-time financial visibility.</p></div>
+              <div style="margin-bottom:14px;"><div style="font-size:11px; letter-spacing:0.1em; color:#5b6675; margin-bottom:5px;">APPROACH</div><p style="font-family:'IBM Plex Sans',sans-serif; margin:0; color:#9aa7b4; font-size:13.5px; line-height:1.65;" data-i18n="p02_ap">Designed modular services with fine-grained RBAC at the data-access layer and a real-time cost engine feeding profitability dashboards.</p></div>
+              <div style="margin-bottom:20px;"><div style="font-size:11px; letter-spacing:0.1em; color:#5b6675; margin-bottom:5px;">OUTCOME</div><p style="font-family:'IBM Plex Sans',sans-serif; margin:0; color:#9aa7b4; font-size:13.5px; line-height:1.65;" data-i18n="p02_out">Faster financial decisions with zero unauthorized data exposure across the organization.</p></div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:18px;">
+                <div style="background:#0f1f17; border:1px solid #1f3a2a; border-radius:7px; padding:14px;"><div style="color:#3fb950; font-size:24px; font-weight:700;">+40%</div><div style="font-family:'IBM Plex Sans',sans-serif; color:#8b97a5; font-size:11.5px; margin-top:3px;" data-i18n="p02_m1">faster financial decisions</div></div>
+                <div style="background:#0f1f17; border:1px solid #1f3a2a; border-radius:7px; padding:14px;"><div style="color:#3fb950; font-size:24px; font-weight:700;">0</div><div style="font-family:'IBM Plex Sans',sans-serif; color:#8b97a5; font-size:11.5px; margin-top:3px;" data-i18n="p02_m2">unauthorized data exposures</div></div>
+              </div>
+              <div style="display:flex; gap:7px; flex-wrap:wrap;">
+                <span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Python</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">FastAPI</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">React</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Tailwind</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">RBAC</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">MySQL</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Alembic</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Docker</span>
+              </div>
+              <div style="display:inline-flex; align-items:center; gap:7px; margin-top:16px; font-size:12px; color:#5b6675;"><span style="width:6px;height:6px;border-radius:50%;background:#5b6675;"></span>Private codebase</div>
+            </div>
+            <!-- RBAC diagram -->
+            <div style="background:#0d1118; border:1px solid #1a212c; border-radius:8px; padding:18px; background-image:linear-gradient(#11161f 1px,transparent 1px),linear-gradient(90deg,#11161f 1px,transparent 1px); background-size:22px 22px;">
+              <div style="display:flex; justify-content:space-between; font-size:11px; color:#5b6675; margin-bottom:16px;"><span>rbac-access.svg</span><span style="color:#3fb950;">● 4 roles</span></div>
+              <div style="display:flex; gap:8px; justify-content:center; margin-bottom:6px;">
+                <span style="font-size:10px; color:#79c0ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 8px;">ADMIN</span>
+                <span style="font-size:10px; color:#79c0ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 8px;">HR</span>
+                <span style="font-size:10px; color:#79c0ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 8px;">FINANCE</span>
+                <span style="font-size:10px; color:#79c0ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 8px;">EMPLOYEE</span>
+              </div>
+              <div style="width:2px;height:14px;background:#2a3340;margin:0 auto;"></div>
+              <div style="text-align:center; font-size:9px; color:#58a6ff; margin-bottom:4px;">policy check</div>
+              <div style="background:#0e1a2b; border:1px solid #1b3050; border-left:2px solid #58a6ff; border-radius:5px; padding:9px 13px; max-width:240px; margin:0 auto;"><div style="color:#79c0ff; font-size:12.5px; text-align:center;">RBAC Policy Engine</div></div>
+              <div style="display:flex; justify-content:center; gap:16px; margin:8px 0 4px;">
+                <div style="width:2px;height:14px;background:#2a3340;"></div><div style="width:2px;height:14px;background:#2a3340;"></div><div style="width:2px;height:14px;background:#2a3340;"></div>
+              </div>
+              <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px;">
+                <div style="background:#11151c; border:1px solid #232a35; border-radius:5px; padding:8px; text-align:center; font-size:10.5px; color:#c5ced8;">HR<br><span style="color:#5b6675;">module</span></div>
+                <div style="background:#11151c; border:1px solid #232a35; border-radius:5px; padding:8px; text-align:center; font-size:10.5px; color:#c5ced8;">Payroll<br><span style="color:#5b6675;">module</span></div>
+                <div style="background:#11151c; border:1px solid #232a35; border-radius:5px; padding:8px; text-align:center; font-size:10.5px; color:#c5ced8;">Time<br><span style="color:#5b6675;">tracking</span></div>
+              </div>
+              <div style="width:2px;height:14px;background:#2a3340;margin:8px auto 4px;"></div>
+              <div style="background:#11151c; border:1px solid #232a35; border-left:2px solid #3fb950; border-radius:5px; padding:9px 13px; max-width:240px; margin:0 auto; display:flex; justify-content:space-between;"><span style="color:#e6edf3; font-size:12.5px;">Cost Engine</span><span style="font-size:9px; color:#3fb950;">real-time</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== PROJECT 03 ===== -->
+        <div id="proj-03" style="padding:34px 48px; border-bottom:1px solid #11161f;">
+          <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:4px;">
+            <span style="font-size:12px; color:#58a6ff;">// 03</span>
+            <span style="font-size:10px; color:#d2a8ff; border:1px solid #2d2348; background:#1a1430; border-radius:3px; padding:2px 7px;">PFE · 2025</span>
+          </div>
+          <h3 style="font-size:20px; color:#e6edf3; margin:0 0 4px;">HR-Expense</h3>
+          <div style="font-size:12.5px; color:#5b6675; margin-bottom:18px;">Integral Building Solutions (SIB) · Kénitra</div>
+          <p style="font-family:'IBM Plex Sans',sans-serif; font-size:14.5px; color:#9aa7b4; line-height:1.7; max-width:680px; margin:0 0 24px;" data-i18n="p03_sum">A full-stack expense &amp; HR management app built from scratch as my graduation (PFE) project — a hardened Spring Boot (Java 22) backend with Spring Security, JWT session encryption, and strict RBAC across four user roles.</p>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; align-items:start;">
+            <div>
+              <div style="margin-bottom:14px;"><div style="font-size:11px; letter-spacing:0.1em; color:#5b6675; margin-bottom:5px;">CONTEXT</div><p style="font-family:'IBM Plex Sans',sans-serif; margin:0; color:#9aa7b4; font-size:13.5px; line-height:1.65;" data-i18n="p03_pb">My end-of-studies project: prove I could design and harden a real internal tool, not just a prototype.</p></div>
+              <div style="margin-bottom:20px;"><div style="font-size:11px; letter-spacing:0.1em; color:#5b6675; margin-bottom:5px;">OUTCOME</div><p style="font-family:'IBM Plex Sans',sans-serif; margin:0; color:#9aa7b4; font-size:13.5px; line-height:1.65;" data-i18n="p03_out">Passed every internal security audit, with role separation enforced from the filter chain down to the data layer.</p></div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:18px;">
+                <div style="background:#0f1f17; border:1px solid #1f3a2a; border-radius:7px; padding:14px;"><div style="color:#3fb950; font-size:24px; font-weight:700;">100%</div><div style="font-family:'IBM Plex Sans',sans-serif; color:#8b97a5; font-size:11.5px; margin-top:3px;" data-i18n="p03_m1">internal security audits passed</div></div>
+                <div style="background:#11151c; border:1px solid #232a35; border-radius:7px; padding:14px;"><div style="color:#e6edf3; font-size:24px; font-weight:700;">4</div><div style="font-family:'IBM Plex Sans',sans-serif; color:#8b97a5; font-size:11.5px; margin-top:3px;" data-i18n="p03_m2">RBAC user roles</div></div>
+              </div>
+              <div style="display:flex; gap:7px; flex-wrap:wrap;">
+                <span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Java 22</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Spring Boot</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Spring Security</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">React</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">TypeScript</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Hibernate</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">JWT</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">MySQL</span>
+              </div>
+              <a class="link-row" href="https://github.com/mohamedmabsout" target="_blank" rel="noopener" style="text-decoration:none; display:inline-flex; align-items:center; gap:7px; margin-top:16px; font-size:12px; color:#58a6ff;">↗ View on GitHub</a>
+            </div>
+            <!-- code: Spring Security -->
+            <div style="border:1px solid #1a212c; border-radius:8px; overflow:hidden; background:#0b0e13;">
+              <div style="padding:9px 14px; border-bottom:1px solid #1a212c; font-size:11px; color:#5b6675;">SecurityConfig.java</div>
+              <div style="display:flex; padding:14px; font-size:12.5px;">
+                <div style="flex:none; width:22px; margin-right:14px; text-align:right; color:#3b4250;"><div style="height:23px;line-height:23px;">1</div><div style="height:23px;line-height:23px;">2</div><div style="height:23px;line-height:23px;">3</div><div style="height:23px;line-height:23px;">4</div><div style="height:23px;line-height:23px;">5</div><div style="height:23px;line-height:23px;">6</div><div style="height:23px;line-height:23px;">7</div></div>
+                <div style="flex:1; min-width:0; white-space:nowrap; overflow-x:auto;">
+                  <div style="height:23px;line-height:23px;">http</div>
+                  <div style="height:23px;line-height:23px;">&nbsp;&nbsp;.<span style="color:#d2a8ff;">csrf</span>(c -&gt; c.<span style="color:#d2a8ff;">disable</span>())</div>
+                  <div style="height:23px;line-height:23px;">&nbsp;&nbsp;.<span style="color:#d2a8ff;">authorizeHttpRequests</span>(a -&gt; a</div>
+                  <div style="height:23px;line-height:23px;">&nbsp;&nbsp;&nbsp;&nbsp;.<span style="color:#d2a8ff;">requestMatchers</span>(<span style="color:#a5d6ff;">"/api/admin/**"</span>)</div>
+                  <div style="height:23px;line-height:23px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.<span style="color:#d2a8ff;">hasRole</span>(<span style="color:#a5d6ff;">"ADMIN"</span>)</div>
+                  <div style="height:23px;line-height:23px;">&nbsp;&nbsp;&nbsp;&nbsp;.<span style="color:#d2a8ff;">anyRequest</span>().<span style="color:#d2a8ff;">authenticated</span>())</div>
+                  <div style="height:23px;line-height:23px;">&nbsp;&nbsp;.<span style="color:#d2a8ff;">addFilterBefore</span>(jwtFilter, ...);</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== PROJECT 04 ===== -->
+        <div id="proj-04" style="padding:34px 48px; border-bottom:1px solid #11161f;">
+          <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:4px;">
+            <span style="font-size:12px; color:#58a6ff;">// 04</span>
+            <span style="font-size:10px; color:#f0883e; border:1px solid #3a2a16; background:#1f160c; border-radius:3px; padding:2px 7px;">PUBLIC SECTOR · 2024</span>
+          </div>
+          <h3 style="font-size:20px; color:#e6edf3; margin:0 0 4px;">Internship Request Portal — R.A.K</h3>
+          <div style="font-size:12.5px; color:#5b6675; margin-bottom:18px;">Régie Autonome Intercommunale de Kénitra</div>
+          <p style="font-family:'IBM Plex Sans',sans-serif; font-size:14.5px; color:#9aa7b4; line-height:1.7; max-width:680px; margin:0 0 24px;" data-i18n="p04_sum">A centralized public-sector platform automating the full internship application workflow for a utility handling 500+ cases a year — replacing an entirely manual, paper-based process.</p>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; align-items:start;">
+            <div>
+              <div style="margin-bottom:14px;"><div style="font-size:11px; letter-spacing:0.1em; color:#5b6675; margin-bottom:5px;">PROBLEM</div><p style="font-family:'IBM Plex Sans',sans-serif; margin:0; color:#9aa7b4; font-size:13.5px; line-height:1.65;" data-i18n="p04_pb">Internship requests were tracked on paper — lost forms, no status visibility, weeks of back-and-forth.</p></div>
+              <div style="margin-bottom:20px;"><div style="font-size:11px; letter-spacing:0.1em; color:#5b6675; margin-bottom:5px;">OUTCOME</div><p style="font-family:'IBM Plex Sans',sans-serif; margin:0; color:#9aa7b4; font-size:13.5px; line-height:1.65;" data-i18n="p04_out">A single auditable queue from submission to approval and archival — handling 500+ cases without paper.</p></div>
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:18px;">
+                <div style="background:#0f1f17; border:1px solid #1f3a2a; border-radius:7px; padding:14px;"><div style="color:#3fb950; font-size:24px; font-weight:700;">500+</div><div style="font-family:'IBM Plex Sans',sans-serif; color:#8b97a5; font-size:11.5px; margin-top:3px;" data-i18n="p04_m1">annual cases handled</div></div>
+                <div style="background:#0f1f17; border:1px solid #1f3a2a; border-radius:7px; padding:14px;"><div style="color:#3fb950; font-size:24px; font-weight:700;">+40%</div><div style="font-family:'IBM Plex Sans',sans-serif; color:#8b97a5; font-size:11.5px; margin-top:3px;" data-i18n="p04_m2">faster processing</div></div>
+              </div>
+              <div style="display:flex; gap:7px; flex-wrap:wrap;">
+                <span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Symfony</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">PHP</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">MySQL</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">phpMyAdmin</span>
+              </div>
+              <a class="link-row" href="https://github.com/mohamedmabsout" target="_blank" rel="noopener" style="text-decoration:none; display:inline-flex; align-items:center; gap:7px; margin-top:16px; font-size:12px; color:#58a6ff;">↗ View on GitHub</a>
+            </div>
+            <!-- workflow diagram (horizontal-ish) -->
+            <div style="background:#0d1118; border:1px solid #1a212c; border-radius:8px; padding:18px; background-image:linear-gradient(#11161f 1px,transparent 1px),linear-gradient(90deg,#11161f 1px,transparent 1px); background-size:22px 22px;">
+              <div style="display:flex; justify-content:space-between; font-size:11px; color:#5b6675; margin-bottom:16px;"><span>request-workflow.svg</span><span style="color:#3fb950;">● automated</span></div>
+              <div style="display:flex; flex-direction:column; gap:0;">
+                <div style="background:#11151c; border:1px solid #232a35; border-left:2px solid #58a6ff; border-radius:5px; padding:9px 13px;"><span style="color:#e6edf3; font-size:12.5px;">1 · Applicant submits</span></div>
+                <div style="width:2px;height:13px;background:#2a3340;margin:0 0 0 16px;"></div>
+                <div style="background:#11151c; border:1px solid #232a35; border-left:2px solid #58a6ff; border-radius:5px; padding:9px 13px;"><span style="color:#e6edf3; font-size:12.5px;">2 · Review queue</span><span style="color:#5b6675; font-size:10px;"> · staff dashboard</span></div>
+                <div style="width:2px;height:13px;background:#2a3340;margin:0 0 0 16px;"></div>
+                <div style="background:#0e1a2b; border:1px solid #1b3050; border-left:2px solid #58a6ff; border-radius:5px; padding:9px 13px;"><span style="color:#79c0ff; font-size:12.5px;">3 · Approval / reject</span><span style="color:#5b6675; font-size:10px;"> · notified</span></div>
+                <div style="width:2px;height:13px;background:#2a3340;margin:0 0 0 16px;"></div>
+                <div style="background:#11151c; border:1px solid #232a35; border-left:2px solid #3fb950; border-radius:5px; padding:9px 13px;"><span style="color:#e6edf3; font-size:12.5px;">4 · Archived</span><span style="color:#3fb950; font-size:10px;"> · searchable</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== PROJECT 05 ===== -->
+        <div id="proj-05" style="padding:34px 48px; border-bottom:1px solid #11161f;">
+          <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:4px;">
+            <span style="font-size:12px; color:#58a6ff;">// 05</span>
+            <span style="font-size:10px; color:#8b97a5; border:1px solid #232a35; background:#11151c; border-radius:3px; padding:2px 7px;">SIDE PROJECT</span>
+          </div>
+          <h3 style="font-size:20px; color:#e6edf3; margin:0 0 4px;">Expense.SIB Mobile</h3>
+          <div style="font-size:12.5px; color:#5b6675; margin-bottom:18px;">Flutter / Spring Boot · deployed internally</div>
+          <p style="font-family:'IBM Plex Sans',sans-serif; font-size:14.5px; color:#9aa7b4; line-height:1.7; max-width:680px; margin:0 0 24px;" data-i18n="p05_sum">A cross-platform mobile app paired with an encrypted Spring Boot backend for secure inventory and expense management — built so field staff could work without exposing data on the device.</p>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; align-items:start;">
+            <div>
+              <div style="margin-bottom:20px;"><div style="font-size:11px; letter-spacing:0.1em; color:#5b6675; margin-bottom:5px;">RESULT</div><p style="font-family:'IBM Plex Sans',sans-serif; margin:0; color:#9aa7b4; font-size:13.5px; line-height:1.65;" data-i18n="p05_out">Faster, more accurate stock counts in the field — with encrypted sync back to the central system.</p></div>
+              <div style="display:grid; grid-template-columns:1fr; gap:10px; margin-bottom:18px; max-width:220px;">
+                <div style="background:#0f1f17; border:1px solid #1f3a2a; border-radius:7px; padding:14px;"><div style="color:#3fb950; font-size:24px; font-weight:700;">+30%</div><div style="font-family:'IBM Plex Sans',sans-serif; color:#8b97a5; font-size:11.5px; margin-top:3px;" data-i18n="p05_m1">inventory accuracy</div></div>
+              </div>
+              <div style="display:flex; gap:7px; flex-wrap:wrap;">
+                <span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Flutter</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Dart</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Java</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Spring Boot</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Crypto</span>
+              </div>
+              <a class="link-row" href="https://github.com/mohamedmabsout" target="_blank" rel="noopener" style="text-decoration:none; display:inline-flex; align-items:center; gap:7px; margin-top:16px; font-size:12px; color:#58a6ff;">↗ View on GitHub</a>
+            </div>
+            <!-- mobile<->backend diagram -->
+            <div style="background:#0d1118; border:1px solid #1a212c; border-radius:8px; padding:18px; background-image:linear-gradient(#11161f 1px,transparent 1px),linear-gradient(90deg,#11161f 1px,transparent 1px); background-size:22px 22px;">
+              <div style="display:flex; justify-content:space-between; font-size:11px; color:#5b6675; margin-bottom:16px;"><span>mobile-sync.svg</span><span style="color:#3fb950;">● encrypted</span></div>
+              <div style="display:flex; align-items:center; gap:10px; justify-content:center;">
+                <div style="background:#11151c; border:1px solid #232a35; border-left:2px solid #58a6ff; border-radius:5px; padding:12px; text-align:center; min-width:84px;"><div style="color:#e6edf3; font-size:12px;">Flutter</div><div style="color:#5b6675; font-size:9.5px;">app</div></div>
+                <div style="flex:1; height:2px; background:#2a3340; position:relative; max-width:90px;"></div>
+                <div style="background:#0e1a2b; border:1px solid #1b3050; border-left:2px solid #58a6ff; border-radius:5px; padding:12px; text-align:center; min-width:96px;"><div style="color:#79c0ff; font-size:12px;">Spring API</div><div style="color:#5b6675; font-size:9.5px;">TLS · crypto</div></div>
+              </div>
+              <div style="text-align:center; font-size:9px; color:#58a6ff; margin:8px 0;">encrypted sync ↑↓</div>
+              <div style="width:2px;height:14px;background:#2a3340;margin:0 auto;"></div>
+              <div style="background:#11151c; border:1px solid #232a35; border-left:2px solid #3fb950; border-radius:5px; padding:9px 13px; max-width:200px; margin:0 auto; text-align:center;"><span style="color:#e6edf3; font-size:12.5px;">Central DB</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== PROJECT 06 ===== -->
+        <div id="proj-06" style="padding:34px 48px 40px; border-bottom:1px solid #11161f;">
+          <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:4px;">
+            <span style="font-size:12px; color:#58a6ff;">// 06</span>
+            <span style="font-size:10px; color:#8b97a5; border:1px solid #232a35; background:#11151c; border-radius:3px; padding:2px 7px;">HOMELAB</span>
+          </div>
+          <h3 style="font-size:20px; color:#e6edf3; margin:0 0 4px;">Self-hosted Infrastructure Gateway</h3>
+          <div style="font-size:12.5px; color:#5b6675; margin-bottom:18px;">Raspberry Pi · Linux</div>
+          <p style="font-family:'IBM Plex Sans',sans-serif; font-size:14.5px; color:#9aa7b4; line-height:1.7; max-width:680px; margin:0 0 24px;" data-i18n="p06_sum">A self-hosted Linux server on a Raspberry Pi — hardened config, reverse proxy, DNS routing, and network gateway. Practical, hands-on validation of sysadmin, networking, and security-hardening skills.</p>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:24px; align-items:start;">
+            <div>
+              <div style="margin-bottom:20px;"><div style="font-size:11px; letter-spacing:0.1em; color:#5b6675; margin-bottom:5px;">WHY</div><p style="font-family:'IBM Plex Sans',sans-serif; margin:0; color:#9aa7b4; font-size:13.5px; line-height:1.65;" data-i18n="p06_out">Because the best way to understand production infra is to run your own — firewall, TLS, DNS and all.</p></div>
+              <div style="display:flex; gap:7px; flex-wrap:wrap;">
+                <span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Linux</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Raspberry Pi</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Nginx</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">DNS</span><span style="font-size:11px; color:#58a6ff; background:#0e1a2b; border:1px solid #1b3050; border-radius:4px; padding:4px 9px;">Networking</span>
+              </div>
+              <a class="link-row" href="https://github.com/mohamedmabsout" target="_blank" rel="noopener" style="text-decoration:none; display:inline-flex; align-items:center; gap:7px; margin-top:16px; font-size:12px; color:#58a6ff;">↗ View on GitHub</a>
+            </div>
+            <!-- code: gateway.conf -->
+            <div style="border:1px solid #1a212c; border-radius:8px; overflow:hidden; background:#0b0e13;">
+              <div style="padding:9px 14px; border-bottom:1px solid #1a212c; font-size:11px; color:#5b6675;">gateway.conf</div>
+              <div style="display:flex; padding:14px; font-size:12.5px;">
+                <div style="flex:none; width:22px; margin-right:14px; text-align:right; color:#3b4250;"><div style="height:23px;line-height:23px;">1</div><div style="height:23px;line-height:23px;">2</div><div style="height:23px;line-height:23px;">3</div><div style="height:23px;line-height:23px;">4</div><div style="height:23px;line-height:23px;">5</div><div style="height:23px;line-height:23px;">6</div><div style="height:23px;line-height:23px;">7</div></div>
+                <div style="flex:1; min-width:0; white-space:nowrap; overflow-x:auto;">
+                  <div style="height:23px;line-height:23px;"><span style="color:#ff7b72;">server</span> {</div>
+                  <div style="height:23px;line-height:23px;">&nbsp;&nbsp;<span style="color:#79c0ff;">listen</span> <span style="color:#f0883e;">443</span> ssl;</div>
+                  <div style="height:23px;line-height:23px;">&nbsp;&nbsp;<span style="color:#79c0ff;">server_name</span> home.local;</div>
+                  <div style="height:23px;line-height:23px;">&nbsp;&nbsp;<span style="color:#79c0ff;">location</span> / {</div>
+                  <div style="height:23px;line-height:23px;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:#79c0ff;">proxy_pass</span> <span style="color:#a5d6ff;">http://10.0.0.20:8080</span>;</div>
+                  <div style="height:23px;line-height:23px;">&nbsp;&nbsp;}</div>
+                  <div style="height:23px;line-height:23px;">}&nbsp;&nbsp;<span style="color:#5b6675;"># ufw deny incoming</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ========== SKILLS ========== -->
+        <div id="skills" style="padding:40px 48px; border-bottom:1px solid #11161f;">
+          <div style="font-size:12px; letter-spacing:0.14em; color:#58a6ff; margin-bottom:10px;">// TECH STACK</div>
+          <h2 style="font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:26px; color:#e6edf3; margin:0 0 24px;">Skills</h2>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px;">
+            <div style="background:#11151c; border:1px solid #232a35; border-radius:8px; padding:18px;">
+              <div style="font-size:11.5px; color:#ff9d8a; letter-spacing:0.08em; margin-bottom:12px;">// SECURITY &amp; PROTOCOLS</div>
+              <div style="display:flex; gap:7px; flex-wrap:wrap;">
+                <span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">RBAC</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">JWT</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Spring Security</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">AES</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">RSA</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">API Security</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Vulnerability Mgmt</span>
+              </div>
+            </div>
+            <div style="background:#11151c; border:1px solid #232a35; border-radius:8px; padding:18px;">
+              <div style="font-size:11.5px; color:#58a6ff; letter-spacing:0.08em; margin-bottom:12px;">// BACKEND ENGINEERING</div>
+              <div style="display:flex; gap:7px; flex-wrap:wrap;">
+                <span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Python</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">FastAPI</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Pydantic</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Java 22</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Spring Boot</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Hibernate</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">PHP</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Symfony</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Node.js</span>
+              </div>
+            </div>
+            <div style="background:#11151c; border:1px solid #232a35; border-radius:8px; padding:18px;">
+              <div style="font-size:11.5px; color:#3fb950; letter-spacing:0.08em; margin-bottom:12px;">// FRONTEND</div>
+              <div style="display:flex; gap:7px; flex-wrap:wrap;">
+                <span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">React</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Redux Toolkit</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">TypeScript</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Vite</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Tailwind CSS</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Flutter</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Dart</span>
+              </div>
+            </div>
+            <div style="background:#11151c; border:1px solid #232a35; border-radius:8px; padding:18px;">
+              <div style="font-size:11.5px; color:#d2a8ff; letter-spacing:0.08em; margin-bottom:12px;">// CLOUD &amp; DEVOPS</div>
+              <div style="display:flex; gap:7px; flex-wrap:wrap;">
+                <span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Docker</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">AWS</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Linux</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Git</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Alembic</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Network Architecture</span>
+              </div>
+            </div>
+            <div style="background:#11151c; border:1px solid #232a35; border-radius:8px; padding:18px;">
+              <div style="font-size:11.5px; color:#f0883e; letter-spacing:0.08em; margin-bottom:12px;">// DATABASES</div>
+              <div style="display:flex; gap:7px; flex-wrap:wrap;">
+                <span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">MariaDB</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">MySQL</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">MongoDB</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">SQL Optimization</span><span style="font-size:11px; color:#c5ced8; background:#0d1118; border:1px solid #232a35; border-radius:4px; padding:4px 9px;">Relational Modeling</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- certs -->
+          <div style="font-size:11px; letter-spacing:0.1em; color:#5b6675; margin:28px 0 12px;">CERTIFICATIONS</div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px;">
+            <div style="display:flex; align-items:center; gap:12px; background:#11151c; border:1px solid #232a35; border-radius:8px; padding:14px 16px;"><span style="flex:none; width:30px;height:30px;border-radius:6px;background:#0e1a2b;border:1px solid #1b3050;display:flex;align-items:center;justify-content:center;color:#58a6ff;font-size:11px;font-weight:700;">AWS</span><div><div style="color:#e6edf3; font-size:13px;">Cloud Security</div><div style="color:#5b6675; font-size:11px;">AWS Academy</div></div></div>
+            <div style="display:flex; align-items:center; gap:12px; background:#11151c; border:1px solid #232a35; border-radius:8px; padding:14px 16px;"><span style="flex:none; width:30px;height:30px;border-radius:6px;background:#0e1a2b;border:1px solid #1b3050;display:flex;align-items:center;justify-content:center;color:#58a6ff;font-size:11px;font-weight:700;">AWS</span><div><div style="color:#e6edf3; font-size:13px;">Engineering Operations</div><div style="color:#5b6675; font-size:11px;">AWS Academy</div></div></div>
+            <div style="display:flex; align-items:center; gap:12px; background:#11151c; border:1px solid #232a35; border-radius:8px; padding:14px 16px;"><span style="flex:none; width:30px;height:30px;border-radius:6px;background:#0e1a2b;border:1px solid #1b3050;display:flex;align-items:center;justify-content:center;color:#58a6ff;font-size:11px;font-weight:700;">AWS</span><div><div style="color:#e6edf3; font-size:13px;">Cloud Foundations</div><div style="color:#5b6675; font-size:11px;">AWS Academy</div></div></div>
+          </div>
+        </div>
+
+        <!-- ========== CONTACT ========== -->
+        <div id="contact" style="padding:40px 48px 60px;">
+          <div style="font-size:12px; letter-spacing:0.14em; color:#58a6ff; margin-bottom:10px;">// LET'S WORK TOGETHER</div>
+          <h2 style="font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:26px; color:#e6edf3; margin:0 0 18px;">Get in touch</h2>
+          <div style="background:#0b0e13; border:1px solid #1a212c; border-radius:8px; overflow:hidden; max-width:620px;">
+            <div style="padding:9px 14px; border-bottom:1px solid #1a212c; font-size:11px; color:#5b6675;">contact.sh</div>
+            <div style="padding:18px; font-size:13px; line-height:2.0;">
+              <div style="color:#5b6675;">#!/bin/bash</div>
+              <div style="color:#5b6675;" data-i18n="contact_comment"># Open to full-time roles, freelance projects, and collaboration.</div>
+              <div style="color:#5b6675; margin-bottom:10px;" data-i18n="contact_comment2"># Response within 24h.</div>
+              <div><span style="color:#5b6675; display:inline-block; width:96px;">email</span><a id="email-link" href="#" style="color:#58a6ff; text-decoration:none;">loading…</a></div>
+              <div><span style="color:#5b6675; display:inline-block; width:96px;">github</span><a href="https://github.com/mohamedmabsout" target="_blank" rel="noopener" style="color:#58a6ff; text-decoration:none;">github.com/mohamedmabsout</a></div>
+              <div><span style="color:#5b6675; display:inline-block; width:96px;">phone</span><span style="color:#c5ced8;">+212 659 59 28 23</span></div>
+              <div><span style="color:#5b6675; display:inline-block; width:96px;">location</span><span style="color:#c5ced8;">Bouknadel, Salé, Morocco — <span data-i18n="contact_remote">open to remote / hybrid / relocation</span></span></div>
+            </div>
+          </div>
+          <div style="display:flex; gap:12px; margin-top:20px; flex-wrap:wrap; font-size:13px;">
+            <a id="email-cta" href="#" class="btn-primary" style="text-decoration:none; background:#58a6ff; color:#06080c; font-weight:600; padding:11px 18px; border-radius:6px;" data-i18n="cta_contact2">→ email me</a>
+            <span class="btn-ghost" style="cursor:pointer; border:1px solid #232a35; color:#c5ced8; padding:11px 18px; border-radius:6px;" data-i18n="cta_cv2">↓ download CV (PDF)</span>
+          </div>
+          <div style="margin-top:40px; padding-top:20px; border-top:1px solid #11161f; font-size:11.5px; color:#3b4250;">// Designed &amp; built by Mohamed Mabsout · 2026</div>
+        </div>
+
+      </div>
+
+      <!-- ===== STATUS BAR ===== -->
+      <div style="flex:none; display:flex; align-items:center; gap:18px; height:30px; padding:0 16px; background:#0e1a2b; border-top:1px solid #1b3050; font-size:11px; color:#8b97a5;">
+        <span style="color:#58a6ff;">⎇ main</span>
+        <span style="color:#3fb950;">● <span data-i18n="status_open2">Open to opportunities</span></span>
+        <span style="margin-left:auto; display:flex; gap:4px; align-items:center;">
+          <span data-lang="en" style="cursor:pointer; color:#58a6ff;">EN</span>
+          <span style="color:#3b4250;">·</span>
+          <span data-lang="fr" style="cursor:pointer; color:#5b6675;">FR</span>
+        </span>
+        <span>UTF-8</span>
+        <span>Ln 1, Col 1</span>
+      </div>
+
     </div>
-  </footer>
+  </div>
+</div>
+
+
+<script>
+const app = {
+
+  init() {
+    this.root = document.getElementById('app-root');
+    const root = this.root;
+    if (!root) return;
+    this.scroller = root.querySelector('#editor-scroll');
+
+    root.addEventListener('click', (e) => {
+      const nav = e.target.closest('[data-target]');
+      if (nav) { this.goTo(nav.getAttribute('data-target')); return; }
+      const lng = e.target.closest('[data-lang]');
+      if (lng) { this.setLang(lng.getAttribute('data-lang')); return; }
+    });
+
+    if (this.scroller) {
+      this.scroller.addEventListener('scroll', () => {
+        clearTimeout(this._t);
+        this._t = setTimeout(() => this.spy(), 60);
+      });
+    }
+
+    this.fillEmail();
+
+    let saved = 'en';
+    try { saved = localStorage.getItem('mm_lang') || 'en'; } catch (e) {}
+    this.setLang(saved === 'fr' ? 'fr' : 'en');
+    this.spy();
+  },
+
+  fillEmail() {
+    const addr = 'mabsoutmohamed989' + '@' + 'gmail' + '.com';
+    const txt = this.root.querySelector('#email-about');
+    if (txt) txt.textContent = addr;
+    const link = this.root.querySelector('#email-link');
+    if (link) { link.textContent = addr; link.href = 'mailto:' + addr; }
+    const cta = this.root.querySelector('#email-cta');
+    if (cta) cta.href = 'mailto:' + addr;
+  },
+
+  goTo(id) {
+    if (!this.root || !this.scroller) return;
+    const sec = this.root.querySelector('#' + id);
+    if (sec) this.scroller.scrollTo({ top: sec.offsetTop - 6, behavior: 'smooth' });
+  },
+
+  spy() {
+    if (!this.root || !this.scroller) return;
+    const ids = ['readme', 'about', 'projects', 'skills', 'contact'];
+    const pos = this.scroller.scrollTop + 90;
+    let active = ids[0];
+    for (const id of ids) {
+      const s = this.root.querySelector('#' + id);
+      if (s && s.offsetTop <= pos) active = id;
+    }
+    this.setActive(active);
+  },
+
+  fileName(id) {
+    return ({ readme: 'README.md', about: 'about.md', projects: 'projects.json', skills: 'skills.md', contact: 'contact.sh' })[id] || id;
+  },
+
+  setActive(id) {
+    if (!this.root) return;
+    this.root.querySelectorAll('[data-file]').forEach((el) => {
+      const on = el.getAttribute('data-file') === id;
+      el.style.background = on ? '#16202e' : 'transparent';
+      el.style.color = on ? '#e6edf3' : '#8b97a5';
+      el.style.borderLeftColor = on ? '#58a6ff' : 'transparent';
+    });
+    const tab = this.root.querySelector('#active-tab-name');
+    if (tab) tab.textContent = this.fileName(id);
+  },
+
+  setLang(lang) {
+    if (!this.root) return;
+    this.lang = lang;
+    const dict = this.translations();
+    this.root.querySelectorAll('[data-i18n]').forEach((el) => {
+      const k = el.getAttribute('data-i18n');
+      const t = dict[k];
+      if (t && t[lang] != null) el.innerHTML = t[lang];
+    });
+    this.root.querySelectorAll('[data-lang]').forEach((el) => {
+      el.style.color = el.getAttribute('data-lang') === lang ? '#58a6ff' : '#5b6675';
+    });
+    try { localStorage.setItem('mm_lang', lang); } catch (e) {}
+  },
+
+  translations() {
+    return {
+      hero_l1: { en: '&gt; State Engineer · ENSA El Jadida', fr: "&gt; Ingénieur d'État · ENSA El Jadida" },
+      hero_l2: { en: '&gt; Security-first backend &amp; infrastructure', fr: '&gt; Backend &amp; infrastructure orientés sécurité' },
+      hero_bio: { en: 'I design and ship secure backends, hardened infrastructure, and full-stack systems that survive real production traffic — without leaking data.', fr: "Je conçois et déploie des backends sécurisés, des infrastructures durcies et des systèmes full-stack qui tiennent sous une vraie charge de production — sans fuite de données." },
+      stat_months: { en: 'MONTHS IN PRODUCTION', fr: 'MOIS EN PRODUCTION' },
+      stat_projects: { en: 'MAJOR PROJECTS', fr: 'PROJETS MAJEURS' },
+      stat_aws: { en: 'AWS CERTIFICATIONS', fr: 'CERTIFICATIONS AWS' },
+      stat_leaks: { en: 'DATA LEAKS', fr: 'FUITES DE DONNÉES' },
+      cta_work: { en: 'view work →', fr: 'voir mes projets →' },
+      cta_contact: { en: 'get in touch', fr: 'me contacter' },
+      cta_cv: { en: '↓ download CV (PDF)', fr: '↓ télécharger le CV (PDF)' },
+      cta_contact2: { en: '→ email me', fr: "→ m'écrire" },
+      cta_cv2: { en: '↓ download CV (PDF)', fr: '↓ télécharger le CV (PDF)' },
+      about_h: { en: 'Building secure systems that actually ship.', fr: 'Construire des systèmes sécurisés qui partent vraiment en prod.' },
+      about_bio: { en: "I'm a State Engineer from ENSA El Jadida, currently freelancing for SIB building production systems in both Java (Spring Boot) and Python (FastAPI) — from JWT/RBAC-enforced ERP modules serving 100+ employees to an LLM-powered CV-parsing pipeline where every model output is re-validated locally before it touches the database. I work where security meets engineering. I care about the boring parts: access control, data integrity, and what happens at 3am when something breaks.", fr: "Ingénieur d'État diplômé de l'ENSA El Jadida, actuellement freelance pour SIB où je construis des systèmes en production en Java (Spring Boot) et Python (FastAPI) — des modules ERP à RBAC/JWT servant plus de 100 employés jusqu'à un pipeline d'extraction de CV assisté par LLM où chaque sortie du modèle est revalidée localement avant d'atteindre la base de données. Je travaille là où la sécurité rencontre l'ingénierie. Je m'occupe des détails ingrats : contrôle d'accès, intégrité des données, et ce qui se passe à 3h du matin quand ça casse." },
+      pr1_t: { en: 'Security by default', fr: 'Sécurité par défaut' },
+      pr1_d: { en: 'RBAC, JWT and encryption baked in — not bolted on.', fr: 'RBAC, JWT et chiffrement intégrés dès le départ — pas rajoutés après.' },
+      pr2_t: { en: 'Production mindset', fr: 'Esprit production' },
+      pr2_d: { en: "Every project I've shipped runs in a real production environment.", fr: 'Chaque projet livré tourne dans un vrai environnement de production.' },
+      pr3_t: { en: 'Full-stack depth', fr: 'Profondeur full-stack' },
+      pr3_d: { en: 'From database schemas to React UIs and Docker deployments.', fr: 'Du schéma de base de données aux UI React et aux déploiements Docker.' },
+      pr4_t: { en: 'Measurable outcomes', fr: 'Résultats mesurables' },
+      pr4_d: { en: 'I ship things that move real numbers, not demos.', fr: 'Je livre des choses qui font bouger de vrais chiffres, pas des démos.' },
+      proj_intro: { en: 'Production systems, graduation projects, and personal builds. All shipped, all secured.', fr: 'Systèmes en production, projets de fin d\u2019études et réalisations personnelles. Tous livrés, tous sécurisés.' },
+      p01_sum: { en: 'A JWT-secured platform automating the full purchase-order and subcontractor execution lifecycle, with multi-level approval workflows and centralized access control.', fr: "Une plateforme sécurisée par JWT automatisant tout le cycle de vie des bons de commande et de la sous-traitance, avec des workflows d'approbation multi-niveaux et un contrôle d'accès centralisé." },
+      p01_pb: { en: 'Purchase orders and subcontractor flows ran on spreadsheets — no audit trail, no access control, and slow multi-level sign-off.', fr: "Les bons de commande et flux de sous-traitance tournaient sur des tableurs — sans piste d'audit, sans contrôle d'accès, avec des validations multi-niveaux lentes." },
+      p01_ap: { en: 'Built an end-to-end platform with centralized JWT-based security, a multi-level approval workflow engine, and containerized deployment.', fr: "Plateforme de bout en bout avec sécurité centralisée par JWT, moteur de workflow d'approbation multi-niveaux et déploiement conteneurisé." },
+      p01_out: { en: 'The full order lifecycle now lives in one secured, auditable system — faster and fully traceable.', fr: "Tout le cycle de vie des commandes vit désormais dans un seul système sécurisé et auditable — plus rapide et entièrement traçable." },
+      p01_m1: { en: 'manual processing time', fr: 'de traitement manuel' },
+      p01_m2: { en: 'faster approval cycle', fr: "cycle d'approbation plus rapide" },
+      p02_sum: { en: 'Three sensitive ERP modules — HR management, payroll automation, and time tracking — serving 100+ employees, with a real-time cost engine for project profitability and fine-grained RBAC data access control.', fr: "Trois modules ERP sensibles — gestion RH, automatisation de la paie et suivi du temps — pour plus de 100 employés, avec un moteur de coûts en temps réel pour la rentabilité des projets et un contrôle d'accès RBAC granulaire." },
+      p02_pb: { en: 'Sensitive HR and payroll data demanded strict, role-scoped access — and leadership needed real-time financial visibility.', fr: 'Les données RH et de paie sensibles exigeaient un accès strict par rôle — et la direction avait besoin de visibilité financière en temps réel.' },
+      p02_ap: { en: 'Designed modular services with fine-grained RBAC at the data-access layer and a real-time cost engine feeding profitability dashboards.', fr: "Services modulaires avec RBAC granulaire au niveau de l'accès aux données et moteur de coûts en temps réel alimentant les tableaux de rentabilité." },
+      p02_out: { en: 'Faster financial decisions with zero unauthorized data exposure across the organization.', fr: "Des décisions financières plus rapides, sans aucune exposition de données non autorisée dans toute l'organisation." },
+      p02_m1: { en: 'faster financial decisions', fr: 'décisions financières plus rapides' },
+      p02_m2: { en: 'unauthorized data exposures', fr: 'exposition de données non autorisée' },
+      p03_sum: { en: 'A full-stack expense &amp; HR management app built from scratch as my graduation (PFE) project — a hardened Spring Boot (Java 22) backend with Spring Security, JWT session encryption, and strict RBAC across four user roles.', fr: "Une application full-stack de gestion des dépenses et RH construite de zéro comme projet de fin d'études (PFE) — un backend Spring Boot (Java 22) durci avec Spring Security, chiffrement de session JWT et RBAC strict sur quatre rôles." },
+      p03_pb: { en: 'My end-of-studies project: prove I could design and harden a real internal tool, not just a prototype.', fr: "Mon projet de fin d'études : prouver que je pouvais concevoir et durcir un vrai outil interne, pas juste un prototype." },
+      p03_out: { en: 'Passed every internal security audit, with role separation enforced from the filter chain down to the data layer.', fr: "Tous les audits de sécurité internes passés, avec une séparation des rôles appliquée de la chaîne de filtres jusqu'à la couche de données." },
+      p03_m1: { en: 'internal security audits passed', fr: 'audits de sécurité internes passés' },
+      p03_m2: { en: 'RBAC user roles', fr: 'rôles utilisateurs RBAC' },
+      p04_sum: { en: 'A centralized public-sector platform automating the full internship application workflow for a utility handling 500+ cases a year — replacing an entirely manual, paper-based process.', fr: "Une plateforme publique centralisée automatisant tout le workflow des demandes de stage pour une régie traitant plus de 500 dossiers par an — en remplacement d'un processus entièrement manuel et papier." },
+      p04_pb: { en: 'Internship requests were tracked on paper — lost forms, no status visibility, weeks of back-and-forth.', fr: 'Les demandes de stage étaient suivies sur papier — formulaires perdus, aucune visibilité du statut, des semaines d\u2019allers-retours.' },
+      p04_out: { en: 'A single auditable queue from submission to approval and archival — handling 500+ cases without paper.', fr: "Une file unique et auditable, de la soumission à l'approbation et l'archivage — plus de 500 dossiers traités sans papier." },
+      p04_m1: { en: 'annual cases handled', fr: 'dossiers traités par an' },
+      p04_m2: { en: 'faster processing', fr: 'traitement plus rapide' },
+      p05_sum: { en: 'A cross-platform mobile app paired with an encrypted Spring Boot backend for secure inventory and expense management — built so field staff could work without exposing data on the device.', fr: "Une application mobile multiplateforme couplée à un backend Spring Boot chiffré pour la gestion sécurisée des stocks et des dépenses — pensée pour que le personnel de terrain travaille sans exposer les données sur l'appareil." },
+      p05_out: { en: 'Faster, more accurate stock counts in the field — with encrypted sync back to the central system.', fr: 'Des inventaires plus rapides et plus précis sur le terrain — avec une synchronisation chiffrée vers le système central.' },
+      p05_m1: { en: 'inventory accuracy', fr: 'précision des stocks' },
+      p06_sum: { en: 'A self-hosted Linux server on a Raspberry Pi — hardened config, reverse proxy, DNS routing, and network gateway. Practical, hands-on validation of sysadmin, networking, and security-hardening skills.', fr: "Un serveur Linux auto-hébergé sur Raspberry Pi — config durcie, reverse proxy, routage DNS et passerelle réseau. Une validation concrète de mes compétences en administration système, réseau et durcissement de sécurité." },
+      p06_out: { en: 'Because the best way to understand production infra is to run your own — firewall, TLS, DNS and all.', fr: "Parce que la meilleure façon de comprendre une infra de production, c'est d'en gérer une soi-même — pare-feu, TLS, DNS et tout le reste." },
+      contact_comment: { en: '# Open to full-time roles, freelance projects, and collaboration.', fr: '# Ouvert aux postes à plein temps, missions freelance et collaborations.' },
+      contact_comment2: { en: '# Response within 24h.', fr: '# Réponse sous 24h.' },
+      contact_remote: { en: 'open to remote / hybrid / relocation', fr: 'ouvert au télétravail / hybride / mobilité' },
+      status_open: { en: 'Open to opportunities', fr: 'Ouvert aux opportunités' },
+      status_open2: { en: 'Open to opportunities', fr: 'Ouvert aux opportunités' }
+    };
+  }};
+document.addEventListener('DOMContentLoaded', () => app.init());
+</script>
 </body>
 </html>
